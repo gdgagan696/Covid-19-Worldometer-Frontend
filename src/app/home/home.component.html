@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-6">
+      <div class="row">
+        <div class="col-6">
+    <mat-form-field class="filter">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+      </mat-form-field>
+      </div>
+      <div class="col-6">
+        <button mat-raised-button [disabled]="isLoading"color="primary" (click)="downloadCSV()">Download Data as CSV</button>
+      </div>
+      </div>
+    <ng-container *ngIf="isDataAvailable">
+        <p class="last-updated">Last Updated at: {{this.lastUpdated | date:'short'}}</p>
+        <p *ngIf="dataSource.filteredData.length==0" class="filter-result">No Data matching the filter: {{input.value}}</p>
+      <table  class="table-hover table-bordered" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="Country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country Name</th>
+          <td mat-cell *matCellDef="let country"> {{country.Country}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalConfirmed">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Confirmed</th>
+          <td mat-cell *matCellDef="let country"> {{country.TotalConfirmed}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalActive">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Active</th>
+          <td mat-cell *matCellDef="let country"> {{country.TotalActive}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalRecovered">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Recovered</th>
+          <td mat-cell *matCellDef="let country"> {{country.TotalRecovered}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalDeaths">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Deaths</th>
+          <td mat-cell *matCellDef="let country"> {{country.TotalDeaths}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let country; columns: displayedColumns;" (click)="showPieChart(country)"></tr>      
+    </table>
+      <mat-paginator #paginator [pageIndex]="0" [pageSize]="20" [pageSizeOptions]="[10,20,30,40,50,60,70]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </ng-container>
+  </div>
+  <div class="col-6">
+    <app-pie-chart *ngIf="isPieChartEnabled" [pieChartData]="pieChartData" [countryName]="countryName"></app-pie-chart>
+  </div>
+  <app-loader  class="loader" *ngIf="isLoading"></app-loader>
+</div>

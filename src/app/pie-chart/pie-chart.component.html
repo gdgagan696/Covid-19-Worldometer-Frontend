@@ -1,0 +1,8 @@
+<header>
+  <h2 class="country-name">{{countryName}}</h2>
+</header>
+<div class="chart">
+  <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [legend]="true"
+    [colors]="pieChartColor" chartHover>
+  </canvas>
+</div>

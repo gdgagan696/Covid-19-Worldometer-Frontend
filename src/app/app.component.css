@@ -1,0 +1,28 @@
+.text{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    animation: fadeIn ease 4s;
+}
+  /* footer{
+    flex-shrink: 0;
+    flex-grow: 0;
+    background: #eee;
+    padding-top:10px;
+    padding-bottom: 10px;
+    bottom: 0;
+    width: 110%;
+    position: absolute;
+    height: 40px;
+  } */
+  @keyframes fadeIn {
+    0% {opacity: 0;
+        transform: scale(0.50);
+    }
+    100% {opacity: 1;
+        transform: scale(1);
+    }
+  }
+
+  
+    

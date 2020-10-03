@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    overflow-x: hidden;
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url(https://thepathologist.com/fileadmin/_processed_/e/4/csm_0320-900_Supp_COVID19_Teaser_af4a0d487d.jpg);
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
