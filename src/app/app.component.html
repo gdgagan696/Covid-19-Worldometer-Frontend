@@ -1,5 +1,15 @@
-<header class="text">
+<!-- <header class="text">
     <h2>Covid-19 Worldometer</h2>
-</header>
+</header> -->
+
+<mat-toolbar>
+   <h2 class="text">Covid-19 Worldometer</h2>
+   <!-- <span class="extra-spacer"></span> -->
+   <button (click)="openAboutUs()" mat-icon-button aria-label="Icon-button for About Us">
+     <mat-icon>info</mat-icon>
+   </button>
+ </mat-toolbar>
+
 <app-home></app-home>
+
 <router-outlet></router-outlet>
