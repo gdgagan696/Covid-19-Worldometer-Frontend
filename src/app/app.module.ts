@@ -13,14 +13,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { LoaderComponent } from './loader/loader.component';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
+import { InfoDialogComponent } from './dialog/info-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PieChartComponent,
-    LoaderComponent
+    LoaderComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,10 +36,15 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinner
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule
     
   ],
   providers: [ThemeService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [InfoDialogComponent]
 })
 export class AppModule { }
