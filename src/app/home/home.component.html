@@ -1,16 +1,17 @@
 <div class="row">
-  <div class="col-6">
+  <div class="col-sm-6">
       <div class="row">
-        <div class="col-6">
+        <div class="col-sm-6">
     <mat-form-field class="filter">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
       </mat-form-field>
       </div>
-      <div class="col-6">
+      <div class="col-sm-6">
         <button mat-raised-button [disabled]="isLoading"color="primary" (click)="downloadCSV()">Download Data as CSV</button>
       </div>
       </div>
+      <br/>
     <ng-container *ngIf="isDataAvailable">
         <p class="last-updated">Last Updated at: {{this.lastUpdated | date:'short'}}</p>
         <p *ngIf="dataSource.filteredData.length==0" class="filter-result">No Data matching the filter: {{input.value}}</p>
@@ -47,8 +48,8 @@
       </mat-paginator>
     </ng-container>
   </div>
-  <div class="col-6">
-    <app-pie-chart *ngIf="isPieChartEnabled" [pieChartData]="pieChartData" [countryName]="countryName"></app-pie-chart>
+  <div #pieChart class="col-sm-6">
+    <app-pie-chart  *ngIf="isPieChartEnabled" [pieChartData]="pieChartData" [countryName]="countryName"></app-pie-chart>
   </div>
-  <app-loader  class="loader" *ngIf="isLoading"></app-loader>
+  <app-loader class="loader" *ngIf="isLoading"></app-loader>
 </div>

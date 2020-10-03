@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatTableDataSource } from '@angular/material/table';
 import { HomeService } from '../service/home.service';
 
 @Component({
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   lastUpdated:Date;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild('pieChart', {static:false}) pieChart:ElementRef;
   
   constructor(private homeService:HomeService,private changeDetector:ChangeDetectorRef) { }
   ngOnInit() {
@@ -54,11 +55,11 @@ export class HomeComponent implements OnInit {
     }
   }
   showPieChart(country:any){
-    window.scrollTo(0,0);
     this.isPieChartEnabled=true;
     this.countryName=country.Country;
     this.pieChartData=[country.TotalConfirmed,country.TotalActive,
       country.TotalRecovered,country.TotalDeaths];
+      this.pieChart.nativeElement.scrollIntoView({behavior: 'smooth'});
   }
 
   downloadCSV(){
